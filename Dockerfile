@@ -8,7 +8,7 @@ RUN \
 # apk add installs the following
  apk add \
    curl \
-   python \
+   python3 \
    py3-pip \
    py3-boto \
    py3-dateutil \
