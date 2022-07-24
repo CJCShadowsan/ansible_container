@@ -9,18 +9,18 @@ RUN \
  apk add \
    curl \
    python \
-   py-pip \
-   py-boto \
-   py-dateutil \
-   py-httplib2 \
-   py-jinja2 \
-   py-paramiko \
-   py-setuptools \
-   py-yaml \
+   py3-pip \
+   py3-boto \
+   py3-dateutil \
+   py3-httplib2 \
+   py3-jinja2 \
+   py3-paramiko \
+   py3-setuptools \
+   py3-yaml \
    openssh-client \
    bash \
    tar && \
- pip install --upgrade pip
+ pip3 install --upgrade pip
 
 # Makes the Ansible directories
 RUN mkdir /etc/ansible /ansible
@@ -30,7 +30,7 @@ RUN mkdir ~/.ssh
 RUN echo "host *" >> ~/.ssh/config &&\
     echo "StrictHostKeyChecking no" >> ~/.ssh/config
 
-RUN pip install ansible
+RUN pip3 install ansible
 # Downloads the Ansible tar (curl) and saves it (-o)
 # RUN \
 #  curl -fsSL https://releases.ansible.com/ansible/ansible-2.9.3.tar.gz -o ansible.tar.gz
