@@ -1,9 +1,8 @@
-# geektechstuff
+# CJCShadowsan
 # using a lot of https://hub.docker.com/r/philm/ansible_playbook/dockerfile/
 
 # Alpine is a lightweight version of Linux.
-# apline:latest could also be used
-FROM alpine:3.7
+FROM alpine:latest
 
 RUN \
 # apk add installs the following
@@ -31,13 +30,14 @@ RUN mkdir ~/.ssh
 RUN echo "host *" >> ~/.ssh/config &&\
     echo "StrictHostKeyChecking no" >> ~/.ssh/config
 
+RUN pip install ansible
 # Downloads the Ansible tar (curl) and saves it (-o)
-RUN \
-  curl -fsSL https://releases.ansible.com/ansible/ansible-2.9.3.tar.gz -o ansible.tar.gz
+# RUN \
+#  curl -fsSL https://releases.ansible.com/ansible/ansible-2.9.3.tar.gz -o ansible.tar.gz
 # Extracts Ansible from the tar file
-RUN \
-  tar -xzf ansible.tar.gz -C ansible --strip-components 1 && \
-  rm -fr ansible.tar.gz /ansible/docs /ansible/examples /ansible/packaging
+# RUN \
+#  tar -xzf ansible.tar.gz -C ansible --strip-components 1 && \
+#  rm -fr ansible.tar.gz /ansible/docs /ansible/examples /ansible/packaging
 
 # Makes a directory for ansible playbooks
 RUN mkdir -p /ansible/playbooks
